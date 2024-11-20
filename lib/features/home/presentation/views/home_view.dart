@@ -119,9 +119,14 @@ class _HomeViewState extends ConsumerState<HomeView> {
                               onChanged: (value) {
                                 setState(() {
                                   employees = notifier.listEmployees
-                                      .where((employee) => employee.name
-                                          .toLowerCase()
-                                          .contains(value.toLowerCase()))
+                                      .where((employee) =>
+                                          employee.name
+                                              .toLowerCase()
+                                              .contains(value.toLowerCase()) ||
+                                          employee.job
+                                              .toLowerCase()
+                                              .contains(value.toLowerCase()) ||
+                                          employee.phone.contains(value))
                                       .toList();
                                 });
                               },
